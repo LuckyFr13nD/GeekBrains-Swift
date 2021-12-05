@@ -158,6 +158,7 @@ class Car {
         case.increase (let power):
             powerOfCar += power
             print("Мощность автомобиля увеличена на \(power) и составляет \(powerOfCar) лошадиных сил.")
+            
         case.decrease (let power):
             powerOfCar -= power
             print("Мощность автомобиля уменьшена на \(power) и составляет \(powerOfCar) лошадиных сил.")

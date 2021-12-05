@@ -54,10 +54,10 @@ class Car {
     
     func printAboutTheCar() {
         
-        print("Автомобиль \(self.carModel) произведен в \(self.yearOfManufacture) году в \(self.countryOfManufacture).")
-        print("Его мощность составляет \(self.powerOfCar) лошадиных сил.")
-        print("Объём багажника \(self.trunkVolumeMax) литров.")
-        print("На текущий момент его двигатель \(self.engine.rawValue) и окна \(self.windows.rawValue).")
+        print("Автомобиль \(carModel) произведен в \(yearOfManufacture) году в \(countryOfManufacture).")
+        print("Его мощность составляет \(powerOfCar) лошадиных сил.")
+        print("Объём багажника \(trunkVolumeMax) литров.")
+        print("На текущий момент его двигатель \(engine.rawValue) и окна \(windows.rawValue).")
         print()
     }
     
@@ -97,13 +97,13 @@ class Car {
             
             if volume > (trunkVolumeMax - trunkVolumeUsed) {
                 
-                print("Объём багажника составляет всего \(self.trunkVolumeMax) литров, нет свободного места.")
+                print("Объём багажника составляет всего \(trunkVolumeMax) литров, нет свободного места.")
                 
             } else {
                 
-                self.trunkVolumeUsed += volume
+                trunkVolumeUsed += volume
                 print("Груз успешно загружен.")
-                print("Осталось \(self.trunkVolumeMax - self.trunkVolumeUsed) литров cвободного места.")
+                print("Осталось \(trunkVolumeMax - trunkVolumeUsed) литров cвободного места.")
             }
             
         case.unload (let volume):
@@ -115,9 +115,9 @@ class Car {
                 
             } else {
                 
-                self .trunkVolumeUsed -= volume
+                trunkVolumeUsed -= volume
                 print("Груз успешно выгружен.")
-                print("Осталось \(self.trunkVolumeMax - self.trunkVolumeUsed) литров cвободного места.")
+                print("Осталось \(trunkVolumeMax - trunkVolumeUsed) литров cвободного места.")
                 
             }
         }
@@ -151,18 +151,16 @@ class Car {
         }
     }
     
-    func switchCarPower (_ power: Power) {
+    func switchPower (_ power: Power) {
         
         switch power {
             
         case.increase (let power):
             powerOfCar += power
-            print("Мощность автомобиля увеличена на \(self.powerOfCar) лошадиных сил.")
-            
+            print("Мощность автомобиля увеличена на \(power) и составляет \(powerOfCar) лошадиных сил.")
         case.decrease (let power):
             powerOfCar -= power
-            print("Мощность автомобиля уменьшена на\(self.powerOfCar) лошадиных сил.")
-            
+            print("Мощность автомобиля уменьшена на \(power) и составляет \(powerOfCar) лошадиных сил.")
         }
     }
 }
@@ -194,10 +192,10 @@ final class TrunkCar: Car {
     
     override func printAboutTheCar() {
         
-        print("Автомобиль \(self.carModel) произведен в \(self.yearOfManufacture) году в \(self.countryOfManufacture).")
-        print("Его мощность составляет \(self.powerOfCar) лошадиных сил.")
-        print("Объём багажника \(self.trunkVolumeMax) литров.")
-        print("На текущий момент его двигатель \(self.engine.rawValue) и окна \(self.windows.rawValue).")
+        print("Автомобиль \(carModel) произведен в \(yearOfManufacture) году в \(countryOfManufacture).")
+        print("Его мощность составляет \(powerOfCar) лошадиных сил.")
+        print("Объём багажника \(trunkVolumeMax) литров.")
+        print("На текущий момент его двигатель \(engine.rawValue) и окна \(windows.rawValue).")
         print()
         
     }
@@ -229,14 +227,14 @@ final class TrunkCar: Car {
                 
                 if volume > (trunkVolumeMax - trunkVolumeUsed){
                     
-                    print("В грузовике \(self.carModel) объём прицепа составляет всего \(self.trunkVolumeMax) литров, не осталось свободного места.")
+                    print("В грузовике \(carModel) объём прицепа составляет всего \(trunkVolumeMax) литров, не осталось свободного места.")
                     
                 } else {
                     
-                    self.trunkVolumeUsed += volume
+                    trunkVolumeUsed += volume
                     
                     print("Груз успешно загружен.")
-                    print("В прицепе осталось \(self.trunkVolumeMax - self .trunkVolumeUsed) литров cвободного места")
+                    print("В прицепе осталось \(trunkVolumeMax - trunkVolumeUsed) литров cвободного места")
                 }
                 
             case.unload (let volume):
@@ -248,9 +246,9 @@ final class TrunkCar: Car {
                     
                 } else {
                     
-                    self.trunkVolumeUsed -= volume
+                    trunkVolumeUsed -= volume
                     print("Груз успешно выгружен.")
-                    print("В прицепе осталось еще \(self.trunkVolumeUsed) литров cвободного места")
+                    print("В прицепе осталось еще \(trunkVolumeUsed) литров cвободного места")
                     
                     
                 }
@@ -273,3 +271,5 @@ var trunkFreightliner = TrunkCar(carModel: "Freightliner",
                                  powerOfCar: 346,
                                  colorOfCar: "Black",
                                  trunkVolumeMax: 19000)
+
+
